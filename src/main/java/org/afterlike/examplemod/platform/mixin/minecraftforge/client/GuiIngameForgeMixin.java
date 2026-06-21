@@ -14,7 +14,8 @@ public class GuiIngameForgeMixin {
 			at = @At(value = "INVOKE",
 					target = "Lnet/minecraftforge/client/GuiIngameForge;renderTitle(IIF)V",
 					shift = At.Shift.AFTER, remap = false))
-	private void renderGameOverlay(final float partialTicks, final CallbackInfo callbackInfo) {
+	private void example$renderGameOverlay(final float partialTicks,
+			final CallbackInfo callbackInfo) {
 		ExampleMod.get().getEventBus().post(new RenderOverlayEvent(partialTicks));
 	}
 }
