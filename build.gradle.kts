@@ -87,6 +87,7 @@ spotless {
 // Dependencies:
 repositories {
     mavenCentral()
+    maven("https://maven.tsuku.re/releases")
     maven("https://repo.spongepowered.org/maven/")
     maven("https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1")
 }
@@ -100,6 +101,7 @@ dependencies {
     mappings("de.oceanlabs.mcp:mcp_stable:22-1.8.9")
     forge("net.minecraftforge:forge:1.8.9-11.15.1.2318-1.8.9")
 
+    shade("re.tsuku:fastbus:1.1.1")
     shade("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
         isTransitive = false
     }
@@ -151,6 +153,7 @@ tasks {
 
         // Relocate any dependencies here:
         fun relocateInside(name: String) = relocate(name, "org.afterlike.examplemod.lib.$name")
+        relocateInside("re.tsuku.fastbus")
     }
 
     assemble.get().dependsOn(remapJar)
